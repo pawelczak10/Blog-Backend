@@ -1,11 +1,14 @@
 from bs4 import BeautifulSoup
 from requests import get
 import json
+import time
+import requests
 
-API_KEY= ""
+API_KEY = "TU WPISZ KLUCZ"
 
 
 def scrap_city(city):
+
     url_imdb = 'https://www.noclegowo.pl/atrakcje/' + city
     page = get(url_imdb)
 
@@ -19,12 +22,14 @@ def scrap_city(city):
         name = place_names[i].text
         image = str(str(str(place_imgs[i]).split(
             "data-src", 1)[1])[2:].split(" ", 1)[0])[:-1]
-        
-        #Pobrać z API
-        location_lat = 23
-        location_lng = 42
-        
-        
+        address = "".join([city, name])
+
+        api_url = "https://maps.googleapis.com/maps/api/geocode/json?address=$" + \
+            address + "&key=" + API_KEY
+        response = requests.get((api_url)).json()
+        location_lat = response['results'][0]['geometry']['location']['lat']
+        location_lng = response['results'][0]['geometry']['location']['lng']
+
         places[i] = {"name": name,
                      "image": image,
                      "location_lng": location_lng,
@@ -34,4 +39,3 @@ def scrap_city(city):
     places_json = json.dumps(places)
 
     return places_json
-
