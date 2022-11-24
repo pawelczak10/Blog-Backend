@@ -47,13 +47,19 @@ app.use((error, req, res, next) => {
   res.json({ message: error.message || 'An unknown error occurred!' });
 });
 
-mongoose
-  .connect(
-    `mongodb+srv://pawelnowak:ProjektPiatek@cluster0.iyixk.mongodb.net/mern?retryWrites=true&w=majority`
-  )
-  .then(() => {
-    app.listen(5000);
-  })
-  .catch(err => {
-    console.log(err);
-  });
+const uri = "mongodb+srv://pawelnowak:ProjektPiatek@cluster0.iyixk.mongodb.net/mern?retryWrites=true&w=majority"
+
+async function connect() {
+  try {
+    await mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+    console.log("Connected to MongoDB");
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+connect();
+app.listen(5000, () => {
+  console.log("Connected to the server");
+});
+
