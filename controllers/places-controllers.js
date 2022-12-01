@@ -7,6 +7,9 @@ const HttpError = require('../models/http-error');
 const getCoordsForAddress = require('../util/location');
 const Place = require('../models/place');
 const User = require('../models/user');
+const { Console } = require('console');
+
+
 
 const getPlaceById = async (req, res, next) => {
   const placeId = req.params.pid;
@@ -79,12 +82,25 @@ const createPlace = async (req, res, next) => {
     return next(error);
   }
 
+  //TODO
+  let image_name;
+  try {
+    image_name = User.image; // Access to the global varaible defined in file-upload line 8
+  } catch (err) {
+    const error = new HttpError(
+      'Could not create place, please try again.',
+      500
+    );
+    return next(error);
+  }
+
+
   const createdPlace = new Place({
     title,
     description,
     address,
     location: coordinates,
-    image: req.file.path,
+    image: image_name,
     creator: req.userData.userId
   });
 

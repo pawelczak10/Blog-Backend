@@ -1,9 +1,10 @@
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-
 const HttpError = require('../models/http-error');
 const User = require('../models/user');
+const uuid = require('uuid/v1');
+
 
 const getUsers = async (req, res, next) => {
   let users;
@@ -59,10 +60,22 @@ const signup = async (req, res, next) => {
     return next(error);
   }
 
+  //TODO
+  let image_name;
+  try {
+    image_name = User.image;
+  } catch (err) {
+    const error = new HttpError(
+      'Could not get image, please try again.',
+      500
+    );
+    return next(error);
+  }
+
   const createdUser = new User({
     name,
     email,
-    image: req.file.path,
+    image: image_name,
     password: hashedPassword,
     places: []
   });

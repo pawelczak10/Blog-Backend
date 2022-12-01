@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup
 from requests import get
 import json
-import time
 import requests
 
 API_KEY = "TU WPISZ KLUCZ"
