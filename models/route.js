@@ -11,4 +11,4 @@ places: { type: String, required: true }
 
 routeSchema.plugin(uniqueValidator);
 
-module.exports = mongoose.model('Route', userSchema);
+module.exports = mongoose.model('Route', routeSchema);
