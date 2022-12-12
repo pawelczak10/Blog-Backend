@@ -13,7 +13,7 @@ var blob_name = function(){
 //Create and update BLOBS
 const azureStorage = new MulterAzureStorage({
   accountName: 'tripaccount',
-  accessKey: '',
+  accessKey: 'MvAI160KjMP9MFIPEBntoIIn2TMQPxJMRYA10fbnlFUd4AlTYTGlkzF2dMYwsSHuTn0ps8bkhON++AStei4+jg==',
   containerName: 'avatars',
   containerSecurity: 'blob',
   blobName: blob_name
