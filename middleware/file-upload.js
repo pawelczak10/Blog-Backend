@@ -4,7 +4,7 @@ const User = require('../models/user');
 const MulterAzureStorage = require('multer-azure-blob-storage').MulterAzureStorage;
 
 
-var blob_name = function(){
+var blob_name = function () {
   User.image = User.name + uuid()
   return User.image
 };
