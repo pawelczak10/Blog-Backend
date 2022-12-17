@@ -60,7 +60,7 @@ const signup = async (req, res, next) => {
     return next(error);
   }
 
-  //TODO
+
   let image_name;
   try {
     image_name = User.image;
