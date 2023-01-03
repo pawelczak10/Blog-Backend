@@ -9,7 +9,7 @@ app.use(express.json());
 
 app.use('/api/places', proxy('http://localhost:8004'))
 app.use('/api/routes', proxy('http://localhost:8002'))
-app.use('/users', proxy('http://localhost:8003'))
+app.use('/api/users', proxy('http://localhost:8003'))
 
 
 app.listen(8000, () => {
