@@ -33,7 +33,7 @@ const StartServer = async() => {
 
   await mongoose
   .connect(
-    `mongodb+srv://kacperharezf:Projektwsrode-27@routes.ixfqle2.mongodb.net/?retryWrites=true&w=majority`
+    `mongodb+srv://danonex98:Projektwpiatek-27@users.4qp3gog.mongodb.net/?retryWrites=true&w=majority`
   )
   .then(() => {
     console.log('########## Users db connected ##########');
