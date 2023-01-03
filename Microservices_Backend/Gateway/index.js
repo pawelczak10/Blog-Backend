@@ -7,9 +7,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use('/Places', proxy('http://localhost:8001'))
-app.use('/Routes', proxy('http://localhost:8002'))
-app.use('/Users', proxy('http://localhost:8003'))
+app.use('/places', proxy('http://localhost:8001'))
+app.use('/routes', proxy('http://localhost:8002'))
+app.use('/api/users', proxy('http://localhost:8003'))
 
 
 app.listen(8000, () => {
