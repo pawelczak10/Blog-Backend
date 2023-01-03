@@ -1,1 +1,5 @@
 /node_modules
+/Microservices_Backend/Users/node_modules
+/Microservices_Backend/Routes/node_modules
+/Microservices_Backend/Places/node_modules
+/Microservices_Backend/Gateway/node_modules
